@@ -13,7 +13,7 @@ function CreatePage(props) {
     const [blogs, setBlogs] = useState([])
 
     useEffect(()=>{
-        fetch('http://localhost:8080/blogs')
+        fetch('https://gentle-bastion-14208.herokuapp.com/blogs')
         .then(res => res.json())
         .then(data => setBlogs(data))
     },[])
@@ -37,11 +37,10 @@ function CreatePage(props) {
             content: content,
         }
 
-        axios.post('http://localhost:8080/addBlogs', variables)
+        axios.post('https://gentle-bastion-14208.herokuapp.com/addBlogs', variables)
             .then(response => {
                 if (response) {
-                    message.success('Post Created!');
-
+                    message.success('Blog Added!');
                     setTimeout(() => {
                     }, 2000);
                 }
@@ -67,6 +66,7 @@ function CreatePage(props) {
                         htmlType="submit"
                         className=""
                         onSubmit={onSubmit}
+                        style={{padding:"8px 15px",border:'1px solid black',backgroundColor:"skyblue"}}
                     >
                         Submit
                 </Button>
